@@ -66,7 +66,8 @@ def create228bitskey(sessionKey, frameCounter):
 
     print("\nStep 2")
     # XOR-ing frame counter and lfsr tapped bits
-    print("\nXOR-ing between frame counter and LFSR with tapped bit\n")
+    print("\nXOR-ing between frame counter and LFSR with tapped bit")
+    print("Frame counter: ", frameCounter,"\n")
     time.sleep(1)
     lfsr1 = clocking(lfsr1, tappedBit("lfsr1"), frameCounter)
     print("XOR-ing result on lfsr 1 : " + ''.join(lfsr1))
@@ -224,11 +225,12 @@ if __name__ == "__main__":
     print("Plain Text:  ", plainText_formatted)
     cipherText = ""
 
-    for num in range(len(plainText)):
+    for num in range(len(plainText_formatted)):
         if keyStream[num]==" ":
             cipherText += " "
             continue
-        temp = int(keyStream[num]) ^ int(plainText[num])
+
+        temp = int(keyStream[num]) ^ int(plainText_formatted[num])
         cipherText += str(temp)
 
     print("Cipper Text: ", cipherText)
