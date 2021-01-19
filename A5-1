@@ -203,7 +203,9 @@ if __name__ == "__main__":
     # frameCounter = deque(frameCounter)
     time.sleep(1)
 
-    #Generate key stream that is longer than plaintext
+    #Generate key stream that is longer or equal than plaintext
+    #Uprościłem algorytm do szyfrowania danych tylko w jednym kierunku
+    #Dane są szyfrowane w blokach 228 bitowych (normalnie są szyfrowane w blokach 114 bitowych; jeden blok uplink, drugi downlink)
     frames = math.ceil(len(plainText)/228)
     print("In order to cipher it, it's necessary to generate", frames, "frames of keys, 228 bits long each\n")
     keyStream = ""
